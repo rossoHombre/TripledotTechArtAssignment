@@ -48,7 +48,8 @@ All items are prefab variants with clear purposed naming. I went with naming ite
 Once again using DOTWeen to animate.
 There is a script called "PopUpManager.cs" which handles the showing and hiding as well as the sequencing of the animations.
 For languages I used the built in Unity localization package to setup string tables and an asset one for the level complete text.
-For the blurring of the overlay, I looked at 2 options, both were insufficient and ineffienct so I left them out. My next approach was going to take a screen shot of the game and apply some sampling to that image to make it appear as it does in the PSD. It seemed to make sense to leave this out though as it is mainly a just a visual flourish but not functionally integral.
+For the blurring of the overlay, I looked at 2 options, both were insufficient and ineffienct so I left them out. My next approach was going to take a screen shot of the game and apply some sampling to that image to make it appear as it does in the PSD.
+It seemed to make sense to leave this out though as it is mainly a just a visual flourish but not functionally integral.
 The original design was to have a base pop up class with a show() and a hide() method which could then be extended upon for both Settings and LevelComplete.
 However I decided to keep those separate but ideally I would still try refactor to achieve something closer to that.
 The way the panel is set up is so that as options are added or removed, it should expand or contract vertically if needs be.
@@ -58,11 +59,14 @@ Using the button modifier approach I added "SimpleButtonScaleModifier.cs" to ind
 ### Level Completed Screen
 
 Once again using DOTWeen to animate with some animator animations for the video icon pulse and the star dancing around.
-Added a shimmer material to some elements to add some razz matazz to the whole situation and a offset to the background tiles.
-Initially had a sparkle waterfall but this looked a bit too loud for my taste so kept it rather subdued.
-Some particles are activated on entry, by just setting the GameObject containing them to active on transition.
+Added a shimmer material to some elements to add a little razz matazz to the whole scenario.
+Added a scrolling effect to the background tiles using offset shader for a little dynamism.
+There was a sparkle waterfall but this looked a bit too loud for my taste so kept it rather subdued.
+Some particles are activated on entry, by just setting the GameObject containing them to active on transition. in. 
 This includes some confetti canons and a looping light trails from behind the star using thhe trails properties in the particle emitter.
-This is where I could have been better with the use of DOTween Sequences, but for the sake of delivery I forsook it this time.
+These are subsequently set to false on exit.
+
+This screen is where I could have made much better with the use of DOTween Sequences, but for the sake of delivery I forsook it this time.
 I also added a simple countup script and had plans to setup a pot collection as it countup but again just a nice to have flourish. 
 
 
@@ -71,8 +75,8 @@ I also added a simple countup script and had plans to setup a pot collection as 
 I setup 2 sprite atlases, one with the base items including settings and another for the level completed screen.
 This is all using Sprite Atlas V2, but I may need to dig in and see if things are running correctly.
 Some drawcalls seem high but could do with improvements.
-Regarding the atlas setup, I did this brazenly according to my folder structure. However it might be beneficial to have these set up by grouping things a bit better. icons, buttons and so forth. For this exercise though that seems excessive.
-I did want to slice some sprites in half, the bottom bar and the settings panel, and mirror these to also save space on the atlas textures. The intention was there but I forgot.
+Regarding the atlas setup, I did this brazenly according to my folder structure. However it might be more beneficial to have these set up by grouping things a bit more sensibly - icons, buttons and so forth. For this exercise though that seemed excessive.
+I did plan to slice some sprites in half, the bottom bar and the settings panel, and mirror these to also save space on the atlas textures. The intention was there but I left it at this time.
 For compression I enabled Crunch compression on packed items.
 Each section, Top Bar, Bottom Bar, Settings, and Level Complete are housed in their own canvases and turned off raycast targets where applicable. 
 
