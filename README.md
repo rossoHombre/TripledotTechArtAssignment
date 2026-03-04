@@ -19,28 +19,28 @@ Repository containing the Unity project as required by the brief set out.
 ### Home Screen & Bottom Bar
 
 Setup for portrait only using Safe Area Helper package from the Asset store to group items so that UI elems get shifted while backgrounds can still overflow.
-One noticable area with this was the bottom bar background. Here, as a band aid solution, I had one instance im the overflow group and another in the SafeArea zone.
-This prevents bar from ever floating but isn't ideal, even though it is setup as a prefab it does make updates a little messy.
+One noticable hiccup with this was the bottom bar background. Here, as a band aid solution, I had one instance in the overflow group and another in the SafeArea zone.
+This prevents bar from ever "floating" but the structure isn't ideal, even though it is setup as a prefab it does make updates a little messy.
 
-My initial approach with the bottom bar was to set these up as a ToggleGroup, treating them like Radio buttons and to leverage as much of Unity's components with as little script as possible. Although I was able to get it somewhat there in functionality, the performance in some instances was abysmal. That led me to search for the promised Tweening library but all I got was DOTween... :D
-This improved performance and quality of the animations but as this was a new tool for me, I am sure I wasn't using it to it's full potential. For instance I would definitely utilise sequences far more and do much better validation and clean up of tweens. However that being said, everrything I tested was very performant and smooth.
+My initial approach with the bottom bar was to set these up as a ToggleGroup, treating them like Radio buttons and to leverage as much of Unity's components with as little script as possible. Although I was able to get this somewhat there in functionality, the performance in some instances was abysmal. 
+This in turn led me to search for the promised Tweening library but all I got was DOTween... :D
+This improved performance and quality of the animations but as this was a new tool for me, I am sure I wasn't using it to it's full potential. For instance I would definitely utilise sequences far more and do much better validation and clean up of tweens. However that being said, everything I tested was very performant and smooth.
 
 In terms of the bottom bar code, the idea here was to have a base button class, "SimpleButtonBaseClass.cs", that extended the following -> IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler.
 This would handle any base button functionality such as playing a generic sound, fallback behaviour and the like.
-You could then add to this buy writing some button modifiers that could do little bits of something via overrides and custom logic.
+You could then add to this by writing some button modifiers that could do little bits of something via overrides and custom logic.
 For the bottom bar for example I have a "BottomBarButtonModifier.cs" file which handles the bottom bar buttons. This is taken in by the "BottomBarView.cs" and together they achieve thhe desired functionality. 
-The poorly named "SimpleButtonTranslationModifier.cs" in turn handles the tab behind the 
+The poorly named "SimpleButtonTranslationModifier.cs" in turn handles the indicator tab behind the buttons and how this behaves.
 This could be refactored a fair bit though with less coupling and much more robust validation but for the sake of is required it makes its case.
 
 There were some things I was not 100% sure about so I made some rash assumptions... hopefully they were close enough :D
-The first being that nothing would be selected on first entry and that after a selection is made something is always selected.
+The first being that nothing would be selected on first entry and that, after a selection is made, something is always selected.
 For the locked buttons, I treated these as their own thing so that they could be tasked with doing what they needed to do regardless of the active available buttons.
-
 
 ### Top Bar UI
 
 Setup on own canvas using layout elements and anchoring to keep central on all devices as well as reflowing if anything is removed.
-All items are prefab variants with clear purposed naming. I went with naming items using uppercase prefixes, so GFX_, BTN_, TXT_, followed by another prefix for where that item might be found, _BB, _LC
+All items are prefab variants with clear purposed naming. I went with naming items using uppercase prefixes, so GFX_, BTN_, TXT_, followed by another prefix for where that item might be found, _BB, _LC throughout the project.
 
 
 ### Settings Popup
