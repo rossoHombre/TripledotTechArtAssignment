@@ -1,10 +1,9 @@
 # TripledotTechArtAssignment
-Unity UI Assessment Project 
-Simple overview of use/purpose.
+Unity UI TA Assessment Project 
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+Repository containing the Unity project as required by the brief set out.
 
 ## Getting Started
 
